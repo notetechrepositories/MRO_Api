@@ -17,7 +17,7 @@ namespace MRO_Api.Controllers
 
         public  async Task<IActionResult>commonGet(JsonObject data)
         {
-            return Ok(1);
+            return Ok(323);
         }
     }
 }
