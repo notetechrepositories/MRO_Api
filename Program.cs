@@ -19,7 +19,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-
+app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader());
 app.MapControllers();
 
 app.Run();
