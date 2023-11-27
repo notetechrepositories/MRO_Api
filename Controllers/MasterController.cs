@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MRO_Api.IRepository;
+using System.Text.Json.Nodes;
 
 namespace MRO_Api.Controllers
 {
@@ -12,6 +13,11 @@ namespace MRO_Api.Controllers
         public MasterController(IMasterRepository masterRepository)
         {
             _masterRepository = masterRepository;
+        }
+
+        public  async Task<IActionResult>commonGet(JsonObject data)
+        {
+            return Ok(1);
         }
     }
 }
