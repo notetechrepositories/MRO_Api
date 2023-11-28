@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MRO_Api.IRepository;
+using MRO_Api.Model;
 using System.Text.Json.Nodes;
 
 namespace MRO_Api.Controllers
 {
-    [Route("api/controller")]
+    [Route("api/common")]
     [ApiController]
     public class MasterController : ControllerBase
     {
@@ -15,9 +16,14 @@ namespace MRO_Api.Controllers
             _masterRepository = masterRepository;
         }
 
-        public  async Task<IActionResult>commonGet(JsonObject data)
+
+        [HttpPost("get")]
+        public  async Task<IActionResult>commonGet([FromBody]CommonModel data)
         {
-            return Ok(323);
+            var result = await _masterRepository.commonGet(data);
+            return Ok(result);
         }
+
+
     }
 }

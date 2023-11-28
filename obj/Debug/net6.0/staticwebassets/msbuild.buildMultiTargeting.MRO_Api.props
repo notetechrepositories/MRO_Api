@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\MRO_Api.props" />
+</Project>
