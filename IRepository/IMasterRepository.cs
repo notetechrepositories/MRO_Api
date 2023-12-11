@@ -5,6 +5,7 @@ namespace MRO_Api.IRepository
 {
     public interface IMasterRepository
     {
-        public Task<object> commonGet(CommonModel jsonData);
+        /* public Task<object> commonGet(CommonModel jsonData);*/
+        public Task<ApiResponseModel<dynamic>> commonGet(CommonModel commonModel);
     }
 }
