@@ -26,9 +26,9 @@ namespace MRO_Api.Repositories
 
 
 
-        public async Task<object>ValidatePin(Dictionary<string,string> jsonData)
+        public async Task<ApiResponseModel<dynamic>> ValidatePin(Dictionary<string, string> jsonData)
         {
-            var finalResultModelObj = new FinalResultModel();         
+            var finalResultModelObj = new FinalResultModel();
             try
             {
                 using (var connection = _context.CreateConnection())
@@ -42,21 +42,28 @@ namespace MRO_Api.Repositories
                          commandType: CommandType.StoredProcedure
                      );
 
-                     finalResultModelObj.data=GetToken(result);
-                     finalResultModelObj.message = "Successfully login ";
-                     finalResultModelObj.status = 200;
-                    return finalResultModelObj;
+                    return new ApiResponseModel<dynamic>
+                    {
+                        Data = GetToken(result),
+                        Message = "Successfully login ",
+                        Status = 200
+                    };
                 }
             }
             catch (Exception ex)
             {
-                finalResultModelObj.data = null;
-                finalResultModelObj.message = ex.Message;
-                finalResultModelObj.status = 400;
-                return finalResultModelObj;
+
+                return new ApiResponseModel<dynamic>
+                {
+                    Data = null,
+                    Message = ex.Message,
+                    Status = 400
+                };
 
             }
         }
+
+
 
 
 
