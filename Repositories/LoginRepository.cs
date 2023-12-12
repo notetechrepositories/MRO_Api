@@ -28,7 +28,6 @@ namespace MRO_Api.Repositories
 
         public async Task<ApiResponseModel<dynamic>> ValidatePin(Dictionary<string, string> jsonData)
         {
-            var finalResultModelObj = new FinalResultModel();
             try
             {
                 using (var connection = _context.CreateConnection())

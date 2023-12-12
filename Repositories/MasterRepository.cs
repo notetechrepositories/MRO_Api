@@ -22,42 +22,12 @@ namespace MRO_Api.Repositories
 
 
 
-        /*  public async Task<object> commonGet(CommonModel commonModel)
-          {
-              var finalResultModelObj = new FinalResultModel();
-              try
-              {
-                  using (var connection = _context.CreateConnection())
-                  {
-                      // Serialize the request object to JSON
-                      var jsonData = JsonConvert.SerializeObject(commonModel);
-
-                      // Call the stored procedure
-                      var result = await connection.QueryFirstOrDefaultAsync<int>(
-                          "api_crud_sp", // Stored procedure name
-                          new { jsonData },  
-                          commandType: CommandType.StoredProcedure
-                      );
-                      finalResultModelObj.data = result;
-                      finalResultModelObj.message = "Successfully retrieved data";
-                      finalResultModelObj.status = 200;
-                      return finalResultModelObj; 
-                  }
-              }
-              catch (Exception ex)
-              {
-                  finalResultModelObj.data = null;
-                  finalResultModelObj.message = ex.Message;
-                  finalResultModelObj.status = 404;
-                  return finalResultModelObj;
-              }
-          }
-  */
+      
 
 
         public async Task<ApiResponseModel<dynamic>> commonGet(CommonModel commonModel)
         {
-            var finalResultModelObj = new FinalResultModel();
+            
             try
             {
                 using (var connection = _context.CreateConnection())
@@ -66,7 +36,7 @@ namespace MRO_Api.Repositories
                     var jsonData = JsonConvert.SerializeObject(commonModel);
 
                     // Call the stored procedure
-                    var result = await connection.QueryFirstOrDefaultAsync<dynamic>(
+                    var result = await connection.QueryAsync<dynamic>(
                         "api_crud_sp", // Stored procedure name
                         new { jsonData },
                         commandType: CommandType.StoredProcedure
